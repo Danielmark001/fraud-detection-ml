@@ -1,4 +1,13 @@
-Flask
+flask
+flask-cors
 pandas
+numpy
 scikit-learn
-tensorflow
+lightgbm
+xgboost
+optuna
+shap
+imbalanced-learn
+matplotlib
+werkzeug
+joblib

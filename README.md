@@ -1,5 +1,5 @@
 # Credit Card Fraud Detection
-A machine learning-powered web application designed for banks to detect credit card fraud in real-time. This solution enables banks to process bulk transaction data, monitor real-time fraud activities, and utilize actionable insights to mitigate risks associated with fraudulent transactions.
+Built a multi-model fraud detection pipeline on the PaySim synthetic financial dataset. Engineered balance-change ratio features, handled class imbalance with SMOTE and RandomUnderSampler (applied to training folds only), and trained a five-model ensemble — Decision Tree, Random Forest, Gradient Boosting, MLP Classifier, and a regularized Keras neural network. Used stratified 5-fold cross-validation with fixed random seeds for reproducibility, and evaluated each model across Accuracy, Precision, Recall, F1, and ROC-AUC. Surfaced tree-based feature importances to explain individual predictions and deployed the full pipeline as a Flask + React web app with batch CSV processing, real-time monitoring, and an analyst feedback loop.
 
 ## Features
 - **File Upload:** Allows users to upload a CSV file containing multiple transactions for batch processing.

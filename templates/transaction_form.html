@@ -15,7 +15,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         .container {
             background-color: #fff;
             border-radius: 8px;
@@ -25,24 +24,18 @@
             max-width: 600px;
             width: 90%;
         }
-
-        form {
-            margin-bottom: 20px;
-        }
-
         label {
             font-weight: bold;
             display: block;
             margin-top: 10px;
         }
-
         input, select {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
             margin-bottom: 15px;
+            box-sizing: border-box;
         }
-
         button {
             background-color: #4CAF50;
             color: white;
@@ -53,9 +46,14 @@
             font-size: 16px;
             transition: background-color 0.3s ease;
         }
-
         button:hover {
             background-color: #45a049;
+        }
+        .hint {
+            font-size: 12px;
+            color: #777;
+            margin-top: -12px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -63,38 +61,34 @@
     <div class="container">
         <h1>Transaction Prediction Form</h1>
         <form action="/predict_transaction" method="post">
-            <label for="transaction_type">Transaction Type:</label>
+
+            <label for="transaction_type">Transaction Type</label>
             <select name="transaction_type" id="transaction_type" required>
                 <option value="CASH_IN">CASH_IN</option>
                 <option value="CASH_OUT">CASH_OUT</option>
                 <option value="DEBIT">DEBIT</option>
                 <option value="PAYMENT">PAYMENT</option>
                 <option value="TRANSFER">TRANSFER</option>
-                <option value="PHISHING">PHISHING</option>
-                <option value="PURCHASE">PURCHASE</option>
-                <option value="SALE">SALE</option>
-                <option value="SCAM">SCAM</option>
             </select>
 
-            <label for="hour_of_day">Hour of Day:</label>
-            <input type="number" name="hour_of_day" id="hour_of_day" min="0" max="23" required>
-
-            <label for="amount">Amount:</label>
+            <label for="amount">Amount</label>
             <input type="number" name="amount" id="amount" min="0" step="0.01" required>
 
-            <label for="login_frequency">Login Frequency:</label>
-            <input type="number" name="login_frequency" id="login_frequency" min="0" required>
+            <label for="oldbalanceOrg">Originator Opening Balance</label>
+            <input type="number" name="oldbalanceOrg" id="oldbalanceOrg" min="0" step="0.01" value="0" required>
 
-            <label for="session_duration">Session Duration (minutes):</label>
-            <input type="number" name="session_duration" id="session_duration" min="0" required>
+            <label for="newbalanceOrig">Originator Closing Balance</label>
+            <input type="number" name="newbalanceOrig" id="newbalanceOrig" min="0" step="0.01" value="0" required>
 
-            <label for="is_weekend">Is Weekend:</label>
-            <select name="is_weekend" id="is_weekend" required>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
+            <label for="oldbalanceDest">Destination Opening Balance</label>
+            <input type="number" name="oldbalanceDest" id="oldbalanceDest" min="0" step="0.01" value="0" required>
 
-            <button type="submit">Submit</button>
+            <label for="newbalanceDest">Destination Closing Balance</label>
+            <input type="number" name="newbalanceDest" id="newbalanceDest" min="0" step="0.01" value="0" required>
+
+            <p class="hint">Balance fields match the PaySim dataset format.</p>
+
+            <button type="submit">Predict</button>
         </form>
     </div>
 </body>
